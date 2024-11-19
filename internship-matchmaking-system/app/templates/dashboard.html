@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container mt-5 p-4 bg-white shadow rounded">
+        <!-- Dashboard Heading -->
+        <h1 class="text-center mb-4">Welcome to your Dashboard</h1>
+
+        <!-- Conditional Button for Admins -->
+        {% if session.get('role') == 'admin' %}
+            <a href="{{ url_for('main.create_opportunity') }}" class="btn btn-success mb-4 w-100">
+                <i class="fas fa-plus-circle"></i> Create New Opportunity
+            </a>
+        {% endif %}
+
+        <!-- Opportunities Section -->
+        <h2>Opportunities:</h2>
+        <ul class="list-group">
+            {% for opportunity in opportunities %}
+                <li class="list-group-item">
+                    <strong>{{ opportunity.title }}</strong>
+                    <br>
+                    <span>{{ opportunity.description }}</span>
+                </li>
+            {% else %}
+                <li class="list-group-item text-center text-muted">No opportunities available or no matches found.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Logout Button -->
+        <a href="{{ url_for('main.logout') }}" class="btn btn-danger mt-4 w-100">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

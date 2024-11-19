@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for {{ opportunity.name }}</title>
+</head>
+<body>
+    <h1>Apply for {{ opportunity.name }}</h1>
+    <p>{{ opportunity.description }}</p>
+
+    <form action="" method="POST">
+        <label for="cover_letter">Cover Letter:</label>
+        <textarea id="cover_letter" name="cover_letter" required></textarea><br>
+        <input type="submit" value="Submit Application">
+    </form>
+</body>
+</html>

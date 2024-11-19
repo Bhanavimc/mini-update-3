@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Matchmaking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container text-center py-5">
+        <h1>Welcome to the Internship Matchmaking System!</h1>
+        
+        {% if 'user_id' not in session %}
+            <div class="mt-4">
+                <a href="{{ url_for('main.login') }}" class="btn btn-primary mx-2">Login</a>
+                <a href="{{ url_for('main.register') }}" class="btn btn-secondary mx-2">Register</a>
+            </div>
+        {% else %}
+            <p class="mt-4">Welcome, {{ session['user_id'] }}!</p>
+            <a href="{{ url_for('main.logout') }}" class="btn btn-danger mt-2">Logout</a>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
